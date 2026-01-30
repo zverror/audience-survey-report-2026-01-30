@@ -1,9 +1,3 @@
-async function load() {
-  const res = await fetch('./data/report.json', { cache: 'no-store' });
-  if (!res.ok) throw new Error('Failed to load report.json');
-  return res.json();
-}
-
 const fmtPct = (x) => `${x.toFixed(1)}%`;
 
 function topOption(stat) {
@@ -218,8 +212,13 @@ function renderInsights(report) {
   ins.innerHTML = `<ul>${bullets.map(b => `<li>${b}</li>`).join('')}</ul>`;
 }
 
-(async () => {
-  const report = await load();
+(() => {
+  const report = window.REPORT;
+  if (!report) {
+    document.getElementById('metaLine').textContent = 'Не найдено report.js (window.REPORT). Проверь, что рядом лежит data/report.js.';
+    return;
+  }
+
   document.getElementById('metaLine').textContent = `Ответов: ${report.meta.sourceRows}. Сгенерировано: ${new Date(report.meta.generatedAt).toLocaleString('ru-RU')}`;
   document.getElementById('genAt').textContent = new Date(report.meta.generatedAt).toLocaleString('ru-RU');
 
