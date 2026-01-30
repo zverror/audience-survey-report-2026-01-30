@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Сводный отчёт по аудитории (опрос)</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <header class="wrap">
+    <div class="kicker">Сводный отчёт</div>
+    <h1>Аудитория и мотивация: результаты опроса</h1>
+    <p class="sub" id="metaLine">Загрузка данных…</p>
+
+    <div class="cards" id="topCards"></div>
+  </header>
+
+  <main class="wrap">
+    <section class="block">
+      <h2>Коротко: что видно по базе</h2>
+      <div class="note" id="insights">Считаю инсайты…</div>
+      <div class="disclaimer">
+        <strong>Важно:</strong> поля с e-mail и Telegram для связи <strong>не используются</strong> и в отчёт не попадают. 
+        Открытые ответы сгруппированы по темам простыми правилами (проценты — ориентир).
+      </div>
+    </section>
+
+    <section class="block">
+      <h2>Вопросы с вариантами (процент по ответам)</h2>
+      <div id="closed"></div>
+    </section>
+
+    <section class="block">
+      <h2>Открытые вопросы (темы + портрет аудитории)</h2>
+      <div id="open"></div>
+    </section>
+
+    <footer class="footer">
+      <div>Сгенерировано автоматически. Версия отчёта: <span id="genAt">—</span></div>
+    </footer>
+  </main>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
